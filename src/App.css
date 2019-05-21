@@ -31,3 +31,12 @@
     transform: rotate(360deg);
   }
 }
+.Clothes-Items{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between
+}
+
+.ImgandLabel{
+  margin: 10px;
+}
