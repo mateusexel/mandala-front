@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import './clients-content.css';
+import { Link } from 'react-router-dom';
 
 
 const GameAd = () => {
   return (
-    <div>
-    <img src='https://res.cloudinary.com/daaxuc13e/image/upload/v1558394637/sample/gamecall_w3leux.jpg' alt='game outdoor ad'/>
-    </div>
+    <Link  to='/game'><img className='outdoor' src='https://res.cloudinary.com/daaxuc13e/image/upload/v1558662640/sample/Screenshot_from_2019-05-23_22-49-53_ug7lsc.png' alt='oioi'/></Link>
   );
 }
 

@@ -14,14 +14,12 @@ export default {
   service,
 
   handleUpload (theFile) {
-    // console.log('file in service: ', theFile)
     return service.post('/image/upload', theFile)
       .then(res => res.data)
       .catch(errorHandler);
   },
 
   saveNewClothe (newClothe) {
-    // console.log('new Clothe is: ', newClothe)
     return service.post('/create', newClothe)
       .then(res => res.data)
       .catch(errorHandler);
@@ -38,5 +36,16 @@ export default {
     return service.delete(`/${id}`)
       .then(res => console.log(res))
       .catch(errorHandler);
+  },
+
+  addLike(like){
+    console.log('chamou', like)
+    return service.post('/like', like)
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(errorHandler);
+    
   }
+
 }

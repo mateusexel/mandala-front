@@ -1,45 +1,45 @@
 import './clients-content.css';
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 import ExibitClothe from './ExibitClothe';
 
-class TypeFilter extends Component {
+class Newest
+ extends Component {
   constructor(props){
     super(props)  
      this.state = {
        open: false,
        currentModal: null
-  };
-  this.filterClothes = this.filterClothes.bind(this);
-}
+      };
+  }
 
   onOpenModal = (idx) => {
-    console.log(this.props)
     if (!this.state.open) {
       this.setState({ open: true, currentModal: idx });
     }
   };
 
-  filterClothes(clotheType) {
-    return this.props.state.clothes.filter((e) => e.type1 === clotheType);
+  orderClothes() {
+    console.log(this.props.state.clothes[0].name)
+    return this.props.state.clothes.sort( (a,b) => {return b.created.localeCompare(a.created)});  
   }
 
   onCloseModal = () => {
+    console.log('entrou')
     this.setState({ open: false, currentModal: null }, () => {
+      console.log(this.state)
     });
   };
 
-
   render(){
-    const clothes = this.filterClothes(this.props.match.params.type);
+    const clothes = this.orderClothes().slice(0,3);
     const { open } = this.state;
     return(
-      <div className='content'>
-        <ul className='Clothes-Items'>
-          {
-            clothes.map((e,idx) => {
-              return <button className='btn-itms btn-type' onClick={() => this.onOpenModal(idx)} key={idx}><li className='ImgandLabel'>
+      <div>
+        <h1>Novidade</h1>
+        <ul className='Clothes-Items'>{
+            clothes.map((e , idx)=> {
+              return <button className='btn-itms' onClick={() => this.onOpenModal(idx)} key={idx}><li className='ImgandLabel'>
                 <img className="imageh2" src={e.imageUrl} alt='uhjns'/>
                 <label>{e.name}</label>
                 </li>
@@ -47,11 +47,13 @@ class TypeFilter extends Component {
                   <ExibitClothe clothe={e} user={this.props.state.loggedInUser}/>
                 </Modal>
                 </button>
-              })}
+              })
+            }
         </ul>
       </div>
     )
   }
 }
-export default TypeFilter;
+export default Newest
+;
 

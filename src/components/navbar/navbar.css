@@ -1,0 +1,10 @@
+.box{
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  list-style: none;
+}
+
+.nav-style{
+  background-color: #e9aa589c
+}
